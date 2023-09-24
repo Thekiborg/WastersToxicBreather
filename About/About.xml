@@ -9,4 +9,7 @@
 	<packageId>Thek.WTB</packageId>
 	<description>Adds a breather that works by pumping tox gas into your pawn's lungs, so wasters aren't useless on mixed xenotype colonies!</description>
 
+	<loadAfter>
+		<li>vanillaracesexpanded.waster</li>
+	</loadAfter>
 </ModMetaData>
