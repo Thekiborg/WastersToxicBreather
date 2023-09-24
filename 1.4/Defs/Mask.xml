@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="HatMakeableBase">
+		<defName>WTM_ToxicBreather</defName>
+		<label>toxic breather</label>
+		<description>A modified gas mask, that pumps tox gas into the user's lungs. Meant for Wasters to be able to live in mixed settlements without having to give up their increased abilities under pollution. /nThe breather will need to be recharged periodically in order to function.</description>
+		<possessionCount>1</possessionCount>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/GasMask/GasMask</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.8</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToMake>6000</WorkToMake>
+			<Mass>0.4</Mass>
+			<StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>0.50</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+			<EquipDelay>0.8</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<ToxicEnvironmentResistance>0.8</ToxicEnvironmentResistance>
+		</equippedStatOffsets>
+		<recipeMaker>
+			<researchPrerequisite>Machining</researchPrerequisite>
+			<unfinishedThingDef>UnfinishedMask</unfinishedThingDef>
+			<recipeUsers Inherit="False">
+				<li>TableMachining</li>
+			</recipeUsers>
+			<displayPriority>215</displayPriority>
+		</recipeMaker>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+			<Wastepack>7</Wastepack>
+		</costList>
+		<apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<immuneToToxGasExposure>true</immuneToToxGasExposure>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/GasMask/GasMask</wornGraphicPath>
+			<hatRenderedFrontOfFace>true</hatRenderedFrontOfFace>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<tags>
+				<li>IndustrialBasic</li>
+			</tags>
+			<forceEyesVisibleForRotations>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</forceEyesVisibleForRotations>
+		</apparel>
+		<comps>
+			<li Class="Thek_WasterToxicBreather.CompProperties_ToxicBreather">
+				<PollutionList>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionRegeneration</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionRage</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionSustenance</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionCognition</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionNumbness</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionHappiness</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionProductivity</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionPsySensitivity</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionFertility</li>
+					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionAccuracy</li>
+					<li>PollutionStimulus</li>
+				</PollutionList>
+			</li>
+			<li Class="CompProperties_Reloadable">
+				<maxCharges>70</maxCharges>
+				<ammoDef>Wastepack</ammoDef>
+				<ammoCountToRefill>5</ammoCountToRefill>
+				<baseReloadTicks>60</baseReloadTicks>
+				<soundReload>Standard_Reload</soundReload>
+				<hotKey>Misc4</hotKey>
+				<chargeNoun>whiff</chargeNoun>
+				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+				<displayGizmoWhileDrafted>false</displayGizmoWhileDrafted>
+			  </li>
+		</comps>
+	</ThingDef>
+</Defs>
