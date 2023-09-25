@@ -12,11 +12,6 @@ namespace Thek_WasterToxicBreather
             Log.Message("<color=#702963>Thek was here:</color> WasterToxicBreather <color=#702963>loaded!</color>");
         }
     }
-    [DefOf]
-    public static class XenotypeDefOf
-    {
-        public static XenotypeDef Waster; //Are you telling me sanguophagues are cache'd but wasters are not
-    }
     public class Comp_ToxicBreather : ThingComp
     {
         public bool IsApparel => parent is Apparel;//To check if something is apparel, for the gizmos down below
@@ -30,19 +25,24 @@ namespace Thek_WasterToxicBreather
             {
                 if (pawn != null && parent.GetComp<CompReloadable>()?.CanBeUsed == true) //Checks if the breather has charges to do a whiff, if it doesn't it does nothing
                 {
-                    if (pawn.genes.Xenotype.defName != "Waster" && HediffDefOf.ToxicBuildup != null) //If the pawn is not a Waster...
+                    if (pawn.genes.Xenotype.defName != "Waster") //If the pawn is not a Waster...
                     {
                         if (!pawn.health.hediffSet.HasHediff(HediffDefOf.ToxicBuildup)) //and he doesn't have toxic buildup
                         {
                             HealthUtility.AdjustSeverity(pawn, HediffDefOf.ToxicBuildup, 0.5f); //...Give toxic buildup
                             parent.GetComp<CompReloadable>().UsedOnce(); //Use up a charge
                         }
-                        else if (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.ToxicBuildup).Severity < 0.489f)//but if he has toxic buildup and it's under 0.45 severity
+                        else if (pawn.genes.Xenotype.defName != "Waster") //If the pawn is not a waster
                         {
-                            pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.ToxicBuildup).Severity = 0.5f;//set the severity at 0.5f, this is me trying to make the usage of the mask equal for wasters and non wasters
+                            if (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.ToxicBuildup).Severity < 0.489f)//but he has toxic buildup and it's under 0.489 severity
+                            {
+                                pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.ToxicBuildup).Severity = 0.5f;//set the severity at 0.5f, this is me trying to make the usage of the mask equal for wasters and non wasters
+                                parent.GetComp<CompReloadable>().UsedOnce(); //Use up a charge
+                            }
                         }
                     }
-                    else if (pawn.genes.Xenotype.defName == "Waster") //)f the pawn is a waster...
+
+                    else if (!ModsConfig.IsActive("vanillaracesexpanded.waster")) //If the pawn is a VE waster...
                     {
                         foreach (HediffDef heddifDef in Props.PollutionList) //This will iterate every entry in HediffDefOfs, and make heddifDef be each one of the entries in said list for each iteration
                         {
@@ -60,6 +60,18 @@ namespace Thek_WasterToxicBreather
                             }
                         }
                     }
+
+                    else if (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.PollutionStimulus) == null) //If the pawn is a Biotech waster and doesn't have pollutionstimulus...
+                    {
+                        HealthUtility.AdjustSeverity(pawn, HediffDefOf.PollutionStimulus, 0.5f); //Make pollutionstimulus
+                        parent.GetComp<CompReloadable>()?.UsedOnce(); //Use up a charge
+                    }
+                    else if (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.PollutionStimulus).Severity < 0.02f) //If the pawn is a Biotech waster and does have pollutionstimulus under 0.02 severity
+                    {
+                        pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.PollutionStimulus).Severity = 0.5f; //Increase severity to 0.5
+                        parent.GetComp<CompReloadable>().UsedOnce(); //Use up a charge
+                    }
+
                     else
                     { //Something has gone terribly wrong to end up here
                         Log.Error("<color=#702963>WASTER HAS NOT BEEN FOUND. REPORT BUG TO THEKIBORG.</color>");
@@ -68,6 +80,7 @@ namespace Thek_WasterToxicBreather
                 }
             }
         }
+
         public override IEnumerable<Gizmo> CompGetWornGizmosExtra()
         {
 
