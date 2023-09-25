@@ -42,7 +42,7 @@ namespace Thek_WasterToxicBreather
                         }
                     }
 
-                    else if (!ModsConfig.IsActive("vanillaracesexpanded.waster")) //If the pawn is a VE waster...
+                    else if (ModsConfig.IsActive("vanillaracesexpanded.waster")) //If the pawn is a VE waster...
                     {
                         foreach (HediffDef heddifDef in Props.PollutionList) //This will iterate every entry in HediffDefOfs, and make heddifDef be each one of the entries in said list for each iteration
                         {
@@ -61,7 +61,7 @@ namespace Thek_WasterToxicBreather
                         }
                     }
 
-                    else if (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.PollutionStimulus) == null) //If the pawn is a Biotech waster and doesn't have pollutionstimulus...
+                    else if (!pawn.health.hediffSet.HasHediff(HediffDefOf.PollutionStimulus)) //If the pawn is a Biotech waster and doesn't have pollutionstimulus...
                     {
                         HealthUtility.AdjustSeverity(pawn, HediffDefOf.PollutionStimulus, 0.5f); //Make pollutionstimulus
                         parent.GetComp<CompReloadable>()?.UsedOnce(); //Use up a charge
@@ -70,12 +70,6 @@ namespace Thek_WasterToxicBreather
                     {
                         pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.PollutionStimulus).Severity = 0.5f; //Increase severity to 0.5
                         parent.GetComp<CompReloadable>().UsedOnce(); //Use up a charge
-                    }
-
-                    else
-                    { //Something has gone terribly wrong to end up here
-                        Log.Error("<color=#702963>WASTER HAS NOT BEEN FOUND. REPORT BUG TO THEKIBORG.</color>");
-                        return;
                     }
                 }
             }
