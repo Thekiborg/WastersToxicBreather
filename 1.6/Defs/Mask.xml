@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef ParentName="HatMakeableBase">
 		<defName>WTM_ToxBreather</defName>
 		<label>toxic breather</label>
-		<description>A modified gas mask, that pumps tox gas into the user's lungs. Meant for Wasters to be able to live in mixed settlements without having to give up their increased abilities under pollution. /nThe breather will need to be recharged periodically in order to function.</description>
+		<description>A gas mask modified to pump tox gas into the wearer's lungs. /nThe breather will need to be recharged periodically in order to function.</description>
 		<possessionCount>1</possessionCount>
-		<tickerType>Normal</tickerType>
+		<tickerType>Long</tickerType>
 		<graphicData>
 			<texPath>Things/Pawn/Humanlike/Apparel/GasMask/GasMask</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -44,7 +44,14 @@
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/GasMask/GasMask</wornGraphicPath>
-			<hatRenderedFrontOfFace>true</hatRenderedFrontOfFace>
+			<renderSkipFlags>
+				<li>None</li>
+			</renderSkipFlags>
+			<drawData>
+				<dataNorth>
+					<layer>-3</layer>
+				</dataNorth>
+			</drawData>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -75,13 +82,12 @@
 				<wasterHediffSeverityOffset>0.12</wasterHediffSeverityOffset>
 				<toxicBuildupSeverityOffset>0.01</toxicBuildupSeverityOffset>
 			</li>
-			<li Class="CompProperties_Reloadable">
-				<maxCharges>70</maxCharges>
+			<li Class="CompProperties_ApparelReloadable">
+				<maxCharges>300</maxCharges>
 				<ammoDef>Wastepack</ammoDef>
 				<ammoCountToRefill>5</ammoCountToRefill>
 				<baseReloadTicks>60</baseReloadTicks>
 				<soundReload>Standard_Reload</soundReload>
-				<hotKey>Misc4</hotKey>
 				<chargeNoun>whiff</chargeNoun>
 				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
 				<displayGizmoWhileDrafted>false</displayGizmoWhileDrafted>

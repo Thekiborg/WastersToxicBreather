@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace Thek_WasterToxicBreather
+namespace Thek_WasterToxBreather
 {
-    public class CompProperties_ToxicBreather : CompProperties
-    {
-        public CompProperties_ToxicBreather()
-        {
-            compClass = typeof(Comp_ToxicBreather);
-        }
-        public List<HediffDef> PollutionList = new();
-    }
+	public class CompProperties_ToxBreather : CompProperties
+	{
+		public CompProperties_ToxBreather()
+		{
+			compClass = typeof(Comp_ToxBreather);
+		}
+
+
+		public List<HediffDef> wasterGeneHediffs = [];
+		public float wasterHediffSeverityOffset;
+		public float toxicBuildupSeverityOffset;
+	}
 }

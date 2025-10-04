@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<ThingDef ParentName="HatMakeableBase">
-		<defName>WTM_ToxicBreather</defName>
+		<defName>WTM_ToxBreather</defName>
 		<label>toxic breather</label>
 		<description>A modified gas mask, that pumps tox gas into the user's lungs. Meant for Wasters to be able to live in mixed settlements without having to give up their increased abilities under pollution. /nThe breather will need to be recharged periodically in order to function.</description>
 		<possessionCount>1</possessionCount>
@@ -46,11 +46,11 @@
 			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/GasMask/GasMask</wornGraphicPath>
 			<renderSkipFlags>
 				<li>None</li>
-			  </renderSkipFlags>
+			</renderSkipFlags>
 			<drawData>
-			  <dataNorth>
-			    <layer>-3</layer>
-			  </dataNorth>
+				<dataNorth>
+					<layer>-3</layer>
+				</dataNorth>
 			</drawData>
 			<layers>
 				<li>Overhead</li>
@@ -65,8 +65,9 @@
 			</forceEyesVisibleForRotations>
 		</apparel>
 		<comps>
-			<li Class="Thek_WasterToxicBreather.CompProperties_ToxicBreather">
-				<PollutionList>
+			<li Class="Thek_WasterToxBreather.CompProperties_ToxBreather">
+				<wasterGeneHediffs>
+					<li>PollutionStimulus</li>
 					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionRegeneration</li>
 					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionRage</li>
 					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionSustenance</li>
@@ -77,8 +78,9 @@
 					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionPsySensitivity</li>
 					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionFertility</li>
 					<li MayRequire="vanillaracesexpanded.waster">VRE_PollutionAccuracy</li>
-					<li>PollutionStimulus</li>
-				</PollutionList>
+				</wasterGeneHediffs>
+				<wasterHediffSeverityOffset>0.12</wasterHediffSeverityOffset>
+				<toxicBuildupSeverityOffset>0.01</toxicBuildupSeverityOffset>
 			</li>
 			<li Class="CompProperties_ApparelReloadable">
 				<maxCharges>70</maxCharges>
@@ -89,7 +91,7 @@
 				<chargeNoun>whiff</chargeNoun>
 				<displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
 				<displayGizmoWhileDrafted>false</displayGizmoWhileDrafted>
-			  </li>
+			</li>
 		</comps>
 	</ThingDef>
 </Defs>

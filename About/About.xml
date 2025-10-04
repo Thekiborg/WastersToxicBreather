@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 
-	<name>Wasters Toxic Breather</name>
+	<name>Waster Tox Breather</name>
 	<author>Thekiborg</author>
 	<supportedVersions>
 		<li>1.4</li>
 		<li>1.5</li>
+		<li>1.6</li>
 	</supportedVersions>
 	<packageId>Thek.WTB</packageId>
-	<description>Adds a breather that works by pumping tox gas into your pawn's lungs, so wasters aren't useless on mixed xenotype colonies!</description>
+	<description>Adds a breather that pumps tox gas into your pawn's lungs, so wasters aren't useless on mixed xenotype colonies!</description>
 
 	<modDependencies>
 		<li>
