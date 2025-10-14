@@ -7,7 +7,7 @@
 		<possessionCount>1</possessionCount>
 		<tickerType>Normal</tickerType>
 		<graphicData>
-			<texPath>Things/Pawn/Humanlike/Apparel/GasMask/GasMask</texPath>
+			<texPath>Things/Pawn/Humanlike/Apparel/ToxBreather/ToxBreather</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>0.8</drawSize>
 		</graphicData>
@@ -43,7 +43,7 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/GasMask/GasMask</wornGraphicPath>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/ToxBreather/ToxBreather</wornGraphicPath>
 			<hatRenderedFrontOfFace>true</hatRenderedFrontOfFace>
 			<layers>
 				<li>Overhead</li>
